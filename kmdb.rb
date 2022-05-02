@@ -94,3 +94,112 @@ puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
+
+Studio.destroy_all
+Actor.destroy_all
+Movie.destroy_all
+Role.destroy_all
+
+#Studio
+new_studio = Studio.new
+new_studio["name"] = "Warner Bros."
+new_studio.save
+
+#All actors
+new_actor = Actor.new
+new_actor["name"] = "Christian Bale"
+new_actor.save
+
+new_actor = Actor.new
+new_actor["name"] = "Michael Caine"
+new_actor.save
+
+new_actor = Actor.new
+new_actor["name"] = "Liam Neeson"
+new_actor.save
+
+new_actor = Actor.new
+new_actor["name"] = "Katie Holmes"
+new_actor.save
+
+new_actor = Actor.new
+new_actor["name"] = "Gary Oldman"
+new_actor.save
+
+new_actor = Actor.new
+new_actor["name"] = "Heath Ledger"
+new_actor.save
+
+new_actor = Actor.new
+new_actor["name"] = "Aaron Eckhart"
+new_actor.save
+
+new_actor = Actor.new
+new_actor["name"] = "Maggie Gyllenhaal"
+new_actor.save
+
+new_actor = Actor.new
+new_actor["name"] = "Tom Hardy"
+new_actor.save
+
+new_actor = Actor.new
+new_actor["name"] = "Joseph Gordon-Levitt"
+new_actor.save
+
+new_actor = Actor.new
+new_actor["name"] = "Anne Hathaway"
+new_actor.save
+
+#All movies
+
+warner_bros = Studio.find_by({"name" => "Warner Bros."})
+
+new_movie = Movie.new
+new_movie["title"] = "Batman Begins"
+new_movie["year_released"] = "2005"
+new_movie["rated"] = "PG-13"
+new_movie["studio_id"] = warner_bros["id"]
+new_movie.save
+
+new_movie = Movie.new
+new_movie["title"] = "The Dark Knight"
+new_movie["year_released"] = "2008"
+new_movie["rated"] = "PG-13"
+new_movie["studio_id"] = warner_bros["id"]
+new_movie.save
+
+new_movie = Movie.new
+new_movie["title"] = "The Dark Knight Rises"
+new_movie["year_released"] = "2012"
+new_movie["rated"] = "PG-13"
+new_movie["studio_id"] = warner_bros["id"]
+new_movie.save
+
+#All roles
+warner_bros = Studio.find_by({"name" => "Warner Bros."})
+batman_begins = Movie.find_by({"title" => "Batman Begins"})
+dark_knight = Movie.find_by({"title" => "The Dark Knight"})
+dark_knight_rises = Movie.find_by({"title" => "The Dark Knight Rises"})
+
+Christian_Bale = Actor.find_by({"name" => "Christian Bale"})
+Michael Caine = Actor.find_by({"name" => "Michael Caine"})
+Michael Caine = Actor.find_by({"name" => "Michael Caine"})
+Michael Caine = Actor.find_by({"name" => "Michael Caine"})
+Michael Caine = Actor.find_by({"name" => "Michael Caine"})
+Michael Caine = Actor.find_by({"name" => "Michael Caine"})
+Michael Caine = Actor.find_by({"name" => "Michael Caine"})
+
+
+Liam Neeson
+Katie Holmes
+Gary Oldman
+Heath Ledger
+Aaron Eckhart
+Maggie Gyllenhaal
+Tom Hardy
+Joseph Gordon-Levitt
+Anne Hathaway
+new_role = Role.new
+new_movie["movie_id"] = "The Dark Knight Rises"
+new_movie["actor_id"] = "2012"
+new_movie["characer_name"] = "PG-13"
