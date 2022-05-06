@@ -95,17 +95,12 @@ puts ""
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
 
-Studio.destroy_all
 Actor.destroy_all
+Studio.destroy_all
 Movie.destroy_all
 Role.destroy_all
 
-#Studio
-new_studio = Studio.new
-new_studio["name"] = "Warner Bros."
-new_studio.save
-
-#All actors
+#actors for all movies
 new_actor = Actor.new
 new_actor["name"] = "Christian Bale"
 new_actor.save
@@ -150,10 +145,14 @@ new_actor = Actor.new
 new_actor["name"] = "Anne Hathaway"
 new_actor.save
 
-#All movies
+#Studio
+new_studio = Studio.new
+new_studio["name"] = "Warner Bros."
+new_studio.save
+
+#movies
 
 warner_bros = Studio.find_by({"name" => "Warner Bros."})
-
 new_movie = Movie.new
 new_movie["title"] = "Batman Begins"
 new_movie["year_released"] = "2005"
@@ -283,3 +282,40 @@ new_role["movie_id"] = dark_knight_rises["id"]
 new_role["actor_id"] = anne_hathaway["id"]
 new_role["character_name"] = "Selina Kyle"
 new_role.save
+
+# for movies output
+
+puts "Movies"
+puts "======"
+
+movies = Movie.all
+
+for movie in movies
+    movie_title = movie["title"]
+    movie_year_released = movie["year_released"]
+    movie_rated = movie["rated"]
+    studio = Studio.find_by({"id" => movie["studio_id"]})
+    studio_name = studio["name"]
+puts "#{movie_title} | #{movie_year_released} | #{movie_rated} | #{studio_name}"
+end
+
+# for roles output
+
+puts ""
+puts "Top Cast"
+puts "========"
+puts ""
+
+movies = Movie.all
+for movie in movies
+    movie_title = movie["title"]
+    movie_number = movie["id"]
+    roles = Role.where({"movie_id" => movie["id"]})
+        for role in roles
+            actor_number = role["actor_id"]
+            name_of_character = role["character_name"]
+            actors = Actor.find_by({"id" => role["actor_id"]})
+            actor_name = actors["name"]
+            puts "#{movie_title} | #{actor_name} | #{name_of_character}"
+        end
+end
