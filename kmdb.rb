@@ -79,18 +79,18 @@
 # TODO!
 
 # Prints a header for the movies output
-puts "Movies"
-puts "======"
-puts ""
+# puts "Movies"
+# puts "======"
+# puts ""
 
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
 
 # Prints a header for the cast output
-puts ""
-puts "Top Cast"
-puts "========"
-puts ""
+# puts ""
+# puts "Top Cast"
+# puts "========"
+# puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
@@ -145,7 +145,7 @@ new_actor = Actor.new
 new_actor["name"] = "Anne Hathaway"
 new_actor.save
 
-#Studio
+
 new_studio = Studio.new
 new_studio["name"] = "Warner Bros."
 new_studio.save
@@ -287,6 +287,7 @@ new_role.save
 
 puts "Movies"
 puts "======"
+puts ""
 
 movies = Movie.all
 
@@ -296,7 +297,7 @@ for movie in movies
     movie_rated = movie["rated"]
     studio = Studio.find_by({"id" => movie["studio_id"]})
     studio_name = studio["name"]
-puts "#{movie_title} | #{movie_year_released} | #{movie_rated} | #{studio_name}"
+    puts "#{movie_title} || #{movie_year_released} || #{movie_rated} || #{studio_name}"
 end
 
 # for roles output
@@ -312,10 +313,10 @@ for movie in movies
     movie_number = movie["id"]
     roles = Role.where({"movie_id" => movie["id"]})
         for role in roles
-            actor_number = role["actor_id"]
+            actor_sequence = role["actor_id"]
             name_of_character = role["character_name"]
             actors = Actor.find_by({"id" => role["actor_id"]})
             actor_name = actors["name"]
-            puts "#{movie_title} | #{actor_name} | #{name_of_character}"
+            puts "#{movie_title} || #{actor_name} || #{name_of_character}" 
         end
 end
